@@ -106,6 +106,8 @@ WORKDIR /srv
 COPY Caddyfile /etc/Caddyfile
 COPY index.php /srv/index.php
 
+COPY 404.html /etc/404.html
+
 # Install Process Wrapper
 COPY --from=builder /go/bin/parent /bin/parent
 
