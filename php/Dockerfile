@@ -4,7 +4,7 @@
 FROM abiosoft/caddy:builder as builder
 
 ARG version="1.0.3"
-ARG plugins="service,reauth,proxyprotocol,realip,ratelimit,prometheus,authz,cache,cgi,cors,expires,geoip,forwardproxy,git,ipfilter,jwt,locale,mailout,login,minify,nobots"
+ARG plugins="service,proxyprotocol,realip,ratelimit,prometheus,authz,cache,cgi,cors,expires,geoip,forwardproxy,git,ipfilter,jwt,locale,mailout,login,minify,nobots"
 ARG enable_telemetry="true"
 
 # Process Wrapper
