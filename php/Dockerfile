@@ -83,6 +83,10 @@ RUN addgroup -g ${PGID} www-user && \
   sed -i "s|^user = .*|user = www-user|g" /etc/php7/php-fpm.d/www.conf && \
   sed -i "s|^group = .*|group = www-user|g" /etc/php7/php-fpm.d/www.conf
 
+# default root
+#RUN sed -i "s|^user = .*|user = root|g" /etc/php7/php-fpm.d/www.conf && \
+#    sed -i "s|^group = .*|group = root|g" /etc/php7/php-fpm.d/www.conf
+
 # Composer
 RUN curl --silent --show-error --fail --location \
   --header "Accept: application/tar+gzip, application/x-gzip, application/octet-stream" \
@@ -99,7 +103,10 @@ COPY --from=builder /install/caddy /usr/bin/caddy
 RUN /usr/bin/caddy -version
 RUN /usr/bin/caddy -plugins
 
-EXPOSE 80 443 2015
+ENV TZ=Asia/Shanghai
+
+EXPOSE 80 443
+
 VOLUME /root/.caddy /srv
 WORKDIR /srv
 
